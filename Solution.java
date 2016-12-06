@@ -70,7 +70,7 @@ public class Solution {
             // move the current index pointer to the "next" index
             cur = j;
             
-            // move the stored value to the front of the queue
+            // move the stored value to the front of the queue for the next loop
             front = back;
             
         } while (cur != start);
