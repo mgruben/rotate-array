@@ -37,7 +37,11 @@ public class Solution {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        Solution sol = new Solution();
+        int[] nums = {1,2,3,4,5,6,7};
+        int k = 3;
+        sol.rotate(nums, k);
+        for (int i: nums) System.out.println(i);
     }
     
 }
