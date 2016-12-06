@@ -42,24 +42,38 @@ public class Solution {
     
     /**
      * Iterates through the array, copying the value of the current index to
-     * the index `k` higher until it reaches the index i it started from.
+     * the index `k` higher until it reaches the index it started from.
      * 
      * @param nums
      * @param k
      * @param i 
      */
-    private void shift(int[] nums, int k, int i) {
-        int fin = i;
-        int front = nums[i];
+    private void shift(int[] nums, int k, int start) {
+        int cur = start;
+        
+        // a two-element queue
+        int front = nums[cur];
         int back;
-        int j;
+        
+        int j; // the next index
+        
         do {
-            j = (i + k) % nums.length;
+            // calculate the next index
+            j = (cur + k) % nums.length;
+            
+            // store the value at the next index, since we will overwrite it
             back = nums[j];
+            
+            // copy the front of the queue to the next index
             nums[j] = front;
-            i = j;
+            
+            // move the current index pointer to the "next" index
+            cur = j;
+            
+            // move the stored value to the front of the queue
             front = back;
-        } while (i != fin);
+            
+        } while (cur != start);
     }
     /**
      * Rotate an array of n elements to the right by k steps.
