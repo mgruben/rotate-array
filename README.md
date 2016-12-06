@@ -4,7 +4,7 @@ Given an array of n elements, rotate those elements to the right by k steps.
 ## Examples
 The array `[1,2,3,4,5,6,7]` is rotated to `[5,6,7,1,2,3,4]` if `k = 3`.  
 
-The array `[1,2,3]` is rotated to `[3,1,2]` if `k = 2`.
+The array `[1,2,3]` is rotated to `[2,3,1]` if `k = 2`.
 
 ## Complexity
 This solution has O(1) space complexity and O(n) time complexity.
