@@ -87,7 +87,8 @@ public class Solution {
     public void rotate(int[] nums, int k) {
         k %= nums.length;
         if (k == 0) return;
-        for (int i = 0; i < gcd(k, nums.length); i++) {
+        int g = gcd(k, nums.length);
+        for (int i = 0; i < g; i++) {
             shift(nums, k, i);
         }
     }
