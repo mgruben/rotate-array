@@ -20,7 +20,20 @@
  * @author Michael <GrubenM@GMail.com>
  */
 public class Solution {
-
+    
+    private void shift(int[] nums, int k, int i) {
+        int fin = i;
+        int front = nums[i];
+        int back;
+        int j;
+        do {
+            j = (i + k) % nums.length;
+            back = nums[j];
+            nums[j] = front;
+            i = j;
+            front = back;
+        } while (i != fin);
+    }
     /**
      * Rotate an array of n elements to the right by k steps.
      * 
@@ -31,15 +44,19 @@ public class Solution {
      * @param k 
      */
     public void rotate(int[] nums, int k) {
-        
+        k %= nums.length;
+        if (k == 0) return;
+        shift(nums, k, 0);
+        if (k % 2 == 1 || nums.length % 2 == 0) return;
+        shift(nums, k, 1);
     }
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Solution sol = new Solution();
-        int[] nums = {1,2,3,4,5,6,7};
-        int k = 3;
+        int[] nums = {1,2,3};
+        int k = 2;
         sol.rotate(nums, k);
         for (int i: nums) System.out.println(i);
     }
