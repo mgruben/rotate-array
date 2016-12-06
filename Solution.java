@@ -21,6 +21,33 @@
  */
 public class Solution {
     
+    /**
+     * Returns the greatest common denominator of a and b
+     * 
+     * Non-recursive implementation by Sedgewick and Wayne.
+     * http://introcs.cs.princeton.edu/java/23recursion/Euclid.java.html
+     * 
+     * @param a
+     * @param b
+     * @return 
+     */
+    private int gcd(int a, int b) {
+        while (b != 0) {
+            int tmp = b;
+            b = a % b;
+            a = tmp;
+        }
+        return a;
+    }
+    
+    /**
+     * Iterates through the array, copying the value of the current index to
+     * the index `k` higher until it reaches the index i it started from.
+     * 
+     * @param nums
+     * @param k
+     * @param i 
+     */
     private void shift(int[] nums, int k, int i) {
         int fin = i;
         int front = nums[i];
@@ -46,9 +73,9 @@ public class Solution {
     public void rotate(int[] nums, int k) {
         k %= nums.length;
         if (k == 0) return;
-        shift(nums, k, 0);
-        if (k % 2 == 1 || nums.length % 2 == 0) return;
-        shift(nums, k, 1);
+        for (int i = 0; i < gcd(k, nums.length); i++) {
+            shift(nums, k, i);
+        }
     }
     /**
      * @param args the command line arguments
